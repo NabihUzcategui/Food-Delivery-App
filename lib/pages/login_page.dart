@@ -18,15 +18,13 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController passController = TextEditingController();
 
   void login() {
-
     // Todo: fill out authentication here
 
-
-
-
-
     // navigate to home page
-    Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()),);
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const HomePage()),
+    );
   }
 
   @override
