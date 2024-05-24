@@ -13,8 +13,17 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Home")),
-      drawer: const MyDrawer(),
-    );
+        drawer: const MyDrawer(),
+        body: NestedScrollView(
+          headerSliverBuilder: (context, innerBoxIsScrolled) => [
+            const MySliverAppBar(
+              title: Text("Title"),
+              child: Text("HOME"),
+            ),
+          ],
+          body: Container(
+            color: Colors.teal,
+          ),
+        ));
   }
 }
