@@ -46,7 +46,7 @@ class Restaurant extends ChangeNotifier {
     ),
     Food(
       name: "Chicken Burger",
-      imagePath: "images/burgers/burger5.jpg",
+      imagePath: "images/burgers/burger1.jpeg",
       description:
           "delicious beef burger with lettuce, tomato, onion and lots of pepper.",
       price: "5.99",

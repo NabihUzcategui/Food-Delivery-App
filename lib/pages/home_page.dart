@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_food_delivery_app/components/my_food_title.dart';
 import 'package:flutter_food_delivery_app/models/food.dart';
 import 'package:flutter_food_delivery_app/models/restaurant.dart';
 import 'package:provider/provider.dart';
 
 import '../components/components.dart';
+import 'pages.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -38,14 +40,28 @@ class _HomePageState extends State<HomePage>
   // return a list of foods in given category
   List<Widget> getFoodInThisCategory(List<Food> fullMenu) {
     return FoodCategory.values.map((category) {
+      // get category menu
       List<Food> categoryMenu = filterMenuByCategory(fullMenu, category);
 
       return ListView.builder(
         itemCount: categoryMenu.length,
         physics: const NeverScrollableScrollPhysics(),
+        padding: EdgeInsets.zero,
         itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(categoryMenu[index].name),
+          // get individual food
+          final food = categoryMenu[index];
+
+          // return food title
+          return MyFoodTitle(
+            food: food,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => FoodPage(food: food,),
+                ),
+              );
+            },
           );
         },
       );
