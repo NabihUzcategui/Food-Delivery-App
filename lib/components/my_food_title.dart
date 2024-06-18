@@ -36,8 +36,8 @@ class MyFoodTitle extends StatelessWidget {
                       Text(
                         food.description,
                         style: TextStyle(
-                          color: Theme.of(context).colorScheme.inversePrimary,
-                        ),
+                            color:
+                                Theme.of(context).colorScheme.inversePrimary),
                       ),
                     ],
                   ),
