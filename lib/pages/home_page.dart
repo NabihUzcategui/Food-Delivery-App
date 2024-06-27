@@ -58,7 +58,9 @@ class _HomePageState extends State<HomePage>
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => FoodPage(food: food,),
+                  builder: (context) => FoodPage(
+                    food: food,
+                  ),
                 ),
               );
             },
