@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_food_delivery_app/components/my_cart_title.dart';
 import 'package:flutter_food_delivery_app/models/restaurant.dart';
 import 'package:provider/provider.dart';
 
@@ -15,7 +16,25 @@ class CartPage extends StatelessWidget {
         //scaffold UI
         return Scaffold(
           appBar: AppBar(
-            title: Text("Cart"),
+            title: const Text("Cart"),
+            backgroundColor: Colors.transparent,
+            foregroundColor: Theme.of(context).colorScheme.inversePrimary,
+          ),
+          body: Column(
+            children: [
+              Expanded(
+                child: ListView.builder(
+                  itemCount: userCart.length,
+                  itemBuilder: (context, index) {
+                    //get individual cart item
+                    final cartItem = userCart[index];
+
+                    //return cart item UI
+                    return MyCartTitle(cartItem: cartItem);
+                  },
+                ),
+              ),
+            ],
           ),
         );
       },
