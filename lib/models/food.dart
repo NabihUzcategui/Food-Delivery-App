@@ -3,7 +3,7 @@ class Food {
   final String name; // cheese burger
   final String description; // a delicious cheese burger full cheese
   final String imagePath; // images/cheese_burger.png
-  final String price; // 4.99
+  final double price; // 4.99
   final FoodCategory category; // burger
   final List<Addon>
       availableAddons; // [cheese, lettuce, tomato, sauce, pickles]
@@ -30,7 +30,7 @@ enum FoodCategory {
 // food addons
 class Addon {
   String name;
-  String price;
+  double price;
 
   Addon({
     required this.name,
