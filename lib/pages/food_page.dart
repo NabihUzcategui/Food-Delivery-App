@@ -58,11 +58,11 @@ class _FoodPageState extends State<FoodPage> {
                       margin: const EdgeInsets.only(top: 5),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30),
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
-                            color: Theme.of(context).colorScheme.primary,
+                            color: Colors.black38,
                             blurRadius: 6,
-                            offset: const Offset(2, 2),
+                            offset: Offset(2, 2),
                           )
                         ],
                       ),
