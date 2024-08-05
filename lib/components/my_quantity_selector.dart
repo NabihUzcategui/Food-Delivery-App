@@ -24,6 +24,7 @@ class MyQuantitySelector extends StatelessWidget {
       ),
       padding: const EdgeInsets.all(8),
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
           //decrease button
           GestureDetector(
