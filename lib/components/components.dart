@@ -1,3 +1,5 @@
+export 'package:flutter_food_delivery_app/components/my_receipt.dart';
+
 export 'package:flutter_food_delivery_app/components/my_button.dart';
 export 'package:flutter_food_delivery_app/components/my_current_location.dart';
 export 'package:flutter_food_delivery_app/components/my_description_box.dart';

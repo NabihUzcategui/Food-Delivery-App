@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_food_delivery_app/models/cart_item.dart';
+import 'package:intl/intl.dart';
 
 import 'food.dart';
 
@@ -14,7 +15,7 @@ class Restaurant extends ChangeNotifier {
           "delicious beef burger with lettuce, tomato, onion and lots of pepper.",
       price: 8.99,
       availableAddons: [
-        Addon(name: "Extra cheese", price: 0.99),
+        Addon(name: "Extra Mayo", price: 0.99),
         Addon(name: "Bacon", price: 1.49),
         Addon(name: "Avocado", price: 1.99),
       ],
@@ -427,6 +428,45 @@ class Restaurant extends ChangeNotifier {
   // H e l p e r s
 
   // generate a recipe
+  String displayCartReceipt() {
+    final receipt = StringBuffer();
+    receipt.writeln("Here´s your receipt...");
+    receipt.writeln();
+
+    //format the date to include uo to seconds only
+    String formttedDAte =
+        DateFormat("dd/MM/yyyy hh:mm:ss").format(DateTime.now());
+
+    receipt.writeln(formttedDAte);
+    receipt.writeln();
+    receipt.writeln("-----------");
+
+    for (final CartItem in _cart) {
+      receipt.writeln(
+          "${CartItem.quantity} x ${CartItem.food.name} - ${_formatPrice(CartItem.food.price)}");
+      if (CartItem.selectedAddons.isNotEmpty) {
+        receipt
+            .writeln("   Add_ons: ${_formatAddons(CartItem.selectedAddons)}");
+      }
+      receipt.writeln();
+    }
+    receipt.writeln("-----------");
+    receipt.writeln();
+    receipt.writeln("Total Items: ${getTotalItemCount()}");
+    receipt.writeln("Total Price: ${_formatPrice(getTotalPrice())}");
+
+    return receipt.toString();
+  }
+
   // format doble value into money format
+  String _formatPrice(double price) {
+    return "\$${price.toStringAsFixed(2)}";
+  }
+
   // format list of addons into string sumary
+  String _formatAddons(List<Addon> addons) {
+    return addons
+        .map((addon) => "${addon.name} (${_formatPrice(addon.price)})")
+        .join(", ");
+  }
 }

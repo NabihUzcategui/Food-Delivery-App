@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "534588471971",
+    "project_id": "fooddeliveryapp-99e9b",
+    "storage_bucket": "fooddeliveryapp-99e9b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:534588471971:android:b58e89b0da5dd98b475d16",
+        "android_client_info": {
+          "package_name": "nabihu.com.flutter_food_delivery_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeSQblqjwrASKXXgPUo4JyHeIzA2ilmWc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
