@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_food_delivery_app/components/my_quantity_selector.dart';
-import 'package:flutter_food_delivery_app/models/food.dart';
+
 import 'package:flutter_food_delivery_app/models/restaurant.dart';
 
 import 'package:provider/provider.dart';
@@ -19,14 +19,12 @@ class MyCartTitle extends StatelessWidget {
           color: Theme.of(context).colorScheme.secondary,
           borderRadius: BorderRadius.circular(8),
         ),
-        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
         child: Column(
           children: [
             Padding(
-              
               padding: const EdgeInsets.all(8.0),
               child: Row(
-
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   //food image
@@ -34,12 +32,12 @@ class MyCartTitle extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                     child: Image.asset(
                       cartItem.food.imagePath,
-                      height: 80,
-                      width: 80,
+                      height: 100,
+                      width: 100,
                     ),
                   ),
 
-                  const SizedBox(width: 8),
+                  const SizedBox(width: 15),
 
                   // name and price
                   Column(
@@ -53,24 +51,28 @@ class MyCartTitle extends StatelessWidget {
                         style: TextStyle(
                             color: Theme.of(context).colorScheme.primary),
                       ),
+
+                      const SizedBox(
+                        height: 15,
+                      ),
+
+                      // increment or decrement cuantity
+                      MyQuantitySelector(
+                        quantity: cartItem.quantity,
+                        food: cartItem.food,
+                        onDecrement: () {
+                          restaurant.removeFromCart(cartItem);
+                        },
+                        onIncrement: () {
+                          restaurant.addToCart(
+                            cartItem.food,
+                            cartItem.selectedAddons,
+                          );
+                        },
+                      )
                     ],
                   ),
                   const Spacer(),
-
-                  // increment or decrement cuantity
-                  MyQuantitySelector(
-                    quantity: cartItem.quantity,
-                    food: cartItem.food,
-                    onDecrement: () {
-                      restaurant.removeFromCart(cartItem);
-                    },
-                    onIncrement: () {
-                      restaurant.addToCart(
-                        cartItem.food,
-                        cartItem.selectedAddons,
-                      );
-                    },
-                  )
                 ],
               ),
             ),

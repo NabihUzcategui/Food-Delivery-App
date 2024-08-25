@@ -343,15 +343,18 @@ class Restaurant extends ChangeNotifier {
     ),
   ];
 
-  // G e t t e r s
-  List<Food> get menu => _menu;
-
-  List<CartItem> get cart => _cart;
-
-  // O p e r a t i o n s
-
   //user cart
   final List<CartItem> _cart = [];
+
+  //delivery address
+  String _deliveryAddress = "Av. de Mayo 1300, CABA";
+
+  // G e t t e r s
+  List<Food> get menu => _menu;
+  List<CartItem> get cart => _cart;
+  String get deliveryAddress => _deliveryAddress;
+
+  // O p e r a t i o n s
 
   // add to cart
   void addToCart(Food food, List<Addon> selectedAddons) {
@@ -425,6 +428,12 @@ class Restaurant extends ChangeNotifier {
     notifyListeners();
   }
 
+  //update delivery address
+  void updateDeliveryAddress(String newAddress) {
+    _deliveryAddress = newAddress;
+    notifyListeners();
+  }
+
   // H e l p e r s
 
   // generate a recipe
@@ -441,12 +450,12 @@ class Restaurant extends ChangeNotifier {
     receipt.writeln();
     receipt.writeln("-----------");
 
-    for (final CartItem in _cart) {
+    for (final cartItem in _cart) {
       receipt.writeln(
-          "${CartItem.quantity} x ${CartItem.food.name} - ${_formatPrice(CartItem.food.price)}");
-      if (CartItem.selectedAddons.isNotEmpty) {
+          "${cartItem.quantity} x ${cartItem.food.name} - ${_formatPrice(cartItem.food.price)}");
+      if (cartItem.selectedAddons.isNotEmpty) {
         receipt
-            .writeln("   Add_ons: ${_formatAddons(CartItem.selectedAddons)}");
+            .writeln("   Add_ons: ${_formatAddons(cartItem.selectedAddons)}");
       }
       receipt.writeln();
     }
@@ -454,6 +463,8 @@ class Restaurant extends ChangeNotifier {
     receipt.writeln();
     receipt.writeln("Total Items: ${getTotalItemCount()}");
     receipt.writeln("Total Price: ${_formatPrice(getTotalPrice())}");
+    receipt.writeln();
+    receipt.writeln("Delivery address: $_deliveryAddress");
 
     return receipt.toString();
   }

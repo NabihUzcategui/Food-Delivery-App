@@ -1,4 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
+
+
 import 'package:flutter/material.dart';
+import 'package:flutter_food_delivery_app/services/auth/auth_service.dart';
 import 'package:flutter_food_delivery_app/utils/extension.dart';
 
 import '../components/components.dart';
@@ -17,8 +21,23 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passController = TextEditingController();
 
-  void login() {
-    // Todo: fill out authentication here
+  void login() async {
+    //get the instance of auth service
+    final authService = AuthService();
+    //try sign in
+    try {
+      await authService.signInwithEmailAndPassword(
+        emailController.text,
+        passController.text,
+      );
+    } catch (e) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(e.toString()),
+        ),
+      );
+    }
 
     // navigate to home page
     Navigator.push(
