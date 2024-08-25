@@ -65,4 +65,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'fooddeliveryapp-99e9b.appspot.com',
     iosBundleId: 'nabihu.com.flutterFoodDeliveryApp',
   );
+
 }

@@ -58,7 +58,9 @@ class _HomePageState extends State<HomePage>
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => FoodPage(food: food,),
+                  builder: (context) => FoodPage(
+                    food: food,
+                  ),
                 ),
               );
             },
@@ -85,7 +87,7 @@ class _HomePageState extends State<HomePage>
                   endIndent: 25,
                 ),
                 //my current location
-                const MyCurrentLocation(),
+                MyCurrentLocation(),
 
                 //description box
                 const MyDescriptionBox()
